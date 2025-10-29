@@ -1,0 +1,5 @@
+from behave import then
+
+@then('the user not found response has returned empty with no body')
+def step_empty_response(context):
+    assert context.response.content in (b'{}', None), f"Response is not empty"
