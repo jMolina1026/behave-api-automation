@@ -31,11 +31,11 @@ def step_send_get_request(context, endpoint):
 def step_send_post_request(context, endpoint):
     url = f"{context.base_url}{endpoint}"
     print(url)
-    body = json.loads(context.text)
+    context.request_body = json.loads(context.text)
     context.response = requests.post(
         url,
         headers=context.headers,
-        json = body,
+        json = context.request_body,
         proxies = {"http": None, "https": None}
     )
 
