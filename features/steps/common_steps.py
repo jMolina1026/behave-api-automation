@@ -39,15 +39,6 @@ def step_send_post_request(context, endpoint):
         proxies = {"http": None, "https": None}
     )
 
-@when('I send a PUT request to "{endpoint}" with body')
-def step_send_put_request(context, endpoint):
-    url = f"{context.base_url}{endpoint}"
-    context.request_body = json.loads(context.text)
-    context.response = requests.put(url,
-        headers=context.headers,
-        json=context.request_body
-        )
-
 @then('the response status code should be {status_code:d}')
 def step_check_status(context, status_code):
     assert context.response.status_code == status_code, \
