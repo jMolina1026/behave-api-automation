@@ -1,10 +1,10 @@
 from behave import then
 from pydantic import ValidationError
 
-from features.schemas.update_user_schemas import UpdateUserSchema
+from features.schemas.update_user_patch_schemas import UpdateUserPatchSchema
 
 
-@then('every item in Update User response should ave the expected {keys} items')
+@then('every item in Patch User response should ave the expected {keys} items')
 def step_check_property(context, keys):
     expected_keys: set = {k.strip() for k in keys.split(',') if k.strip()}
     prop_key: set = set(context.response.json().keys())
@@ -17,10 +17,10 @@ def step_check_property(context, keys):
     extra = prop_key - expected_keys
     assert not extra, f"Unexpected keys found: {extra}"
 
-@then('the datatypes are correct for an updated User: {schema}')
+@then('the datatypes are correct for a PATCH updated User: {schema}')
 def step_validate_schema(context, schema):
     schema_map = {
-        "UpdateUserSchema": UpdateUserSchema,
+        "UpdateUserPatchSchema": UpdateUserPatchSchema,
     }
     json_data = context.response.json()
     try:
@@ -29,7 +29,7 @@ def step_validate_schema(context, schema):
         assert False, f"Expected a validation error: {e}"
 
 
-@then('the PUT update user response body should contain the new attributes from the request body')
+@then('the PATCH update user response body should contain the new attributes from the request body')
 def step_validate_response(context):
     request_body: object = context.request_body
     response_body: object = context.response.json()
@@ -41,7 +41,7 @@ def step_validate_response(context):
             f"For key '{key}', expected '{value}' but got '{response_body[key]}'"
 
 
-@then('the PUT update user response body should contain the extra fields in addition to the request body, extra fields: {keys}')
+@then('the PATCH update user response body should contain the extra fields in addition to the request body, extra fields: {keys}')
 def step_validate_response(context, keys):
     response_body = context.response.json()
     extra_keys = {k.strip() for k in keys.split(",") if k.strip()}
