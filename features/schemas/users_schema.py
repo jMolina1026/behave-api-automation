@@ -37,4 +37,3 @@ class SingleUserSchema(BaseModel):
     data: Data
     support: Support
     _meta: Meta
-

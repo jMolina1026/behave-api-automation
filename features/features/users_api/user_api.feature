@@ -26,6 +26,3 @@ Feature:  User API
     | /users?page=2 | data       | id, email, first_name, last_name, avatar                                            | Data    | 5     |
     | /users?page=2 | support    | url, text                                                                           | Support | 2     |
     | /users?page=2 | _meta      | powered_by, upgrade_url, docs_url, template_gallery, message, features, upgrade_cta | Meta    | 7     |
-
-
-
