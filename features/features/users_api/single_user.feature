@@ -24,21 +24,3 @@ Feature: Single User API
     | /users/1 | data       | id, email, first_name, last_name, avatar                                            | Data    | 5     |
     | /users/2 | support    | url, text                                                                           | Support | 2     |
     | /users/3 | _meta      | powered_by, upgrade_url, docs_url, template_gallery, message, features, upgrade_cta | Meta    | 7     |
-
-#  Scenario: Not a single User is returned
-##    Given the API base URL is "https://reqres.in/api"
-#    When I send a GET request to "/users/23"
-#    Then the response status code should be 404
-
-
-#  @Post
-#  Scenario: Create a new user
-#    Given the API base URL is "https://reqres.in/api"
-#    When I send a POST request to "/users" with body
-#      """
-#          {
-#            "name": "Joe",
-#            "job": "Dirt"
-#          }
-#      """
-#    Then the response status code should be 201
