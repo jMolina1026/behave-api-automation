@@ -13,7 +13,7 @@ Feature: Update an existing User
     And every item in Update User response should ave the expected name, job, updatedAt items
 
 
-  Scenario:  POST and Verify data types for a newly Created User
+  Scenario:  PUT and Verify data types for a newly Created User
     When I send a PUT request to "/users/2" with body
       """
         {
