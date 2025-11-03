@@ -20,7 +20,7 @@ Feature: POST Register User
           "password": "pistol"
         }
       """
-      Then the datatypes are correct for a POST successfully registered user: RegisterUser
+      Then the datatypes are correct for a POST registered user: RegisterUser
 
 
     Scenario: PATCH and Verify that the Request Body was returned in the Response Body
